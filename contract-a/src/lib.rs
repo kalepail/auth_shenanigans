@@ -7,15 +7,13 @@ use soroban_sdk::{
     panic_with_error, vec, Address, Env, Val, Vec,
 };
 
-mod test;
-
 #[contract]
 pub struct Contract;
 
 #[contractimpl]
 impl Contract {
-    pub fn call(env: Env, source: Address) {
-        source.require_auth_for_args(vec![&env]);
+    pub fn call(env: Env, contract_b_address: Address) {
+        contract_b_address.require_auth_for_args(vec![&env]);
     }
 }
 

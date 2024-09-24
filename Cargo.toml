@@ -1,10 +1,10 @@
 [workspace]
 resolver = "2"
 
-members = ["contract-b", "contract-a"]
+members = ["contract-a", "contract-b"]
 
 [workspace.dependencies]
-soroban-sdk = { version = "21.7.0" }
+soroban-sdk = { version = "21.7.2" }
 contract-a = { path = "contract-a" }
 contract-b = { path = "contract-b" }
 

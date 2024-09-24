@@ -31,15 +31,10 @@ impl CustomAccountInterface for Contract {
         _signature: Val,
         auth_contexts: Vec<Context>,
     ) -> Result<(), Error> {
-        for context in auth_contexts.iter() {
-            match context {
-                Context::Contract(ContractContext { contract, .. }) => {
-                    println!("fired 1");
-                    contract.require_auth_for_args(vec![&env]);
-                    println!("fired 2");
-                }
-                Context::CreateContractHostFn(_) => {}
-            }
+        if let Context::Contract(ContractContext { contract: contract_b_address, .. }) = auth_contexts.get_unchecked(0) {
+            println!("fired 1");
+            contract_b_address.require_auth_for_args(vec![&env]);
+            println!("fired 2");
         }
 
         Ok(())
