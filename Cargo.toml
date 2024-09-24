@@ -1,0 +1,19 @@
+[workspace]
+resolver = "2"
+
+members = ["contract-b", "contract-a"]
+
+[workspace.dependencies]
+soroban-sdk = { version = "21.7.0" }
+contract-a = { path = "contract-a" }
+contract-b = { path = "contract-b" }
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
